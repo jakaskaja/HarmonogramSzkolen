@@ -1,9 +1,11 @@
 package pl.pwn.reaktor.harmonogram.controller;
 
 import java.io.IOException;
+import java.time.LocalDate;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -13,6 +15,10 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+
+import pl.pwn.reaktor.harmonogram.model.Training;
+import pl.pwn.reaktor.harmonogram.service.TrainingService;
+
 
 
 public class CourseController {
@@ -38,9 +44,29 @@ public class CourseController {
     @FXML
     private Button btn_back;
 
+     private Training getCourseData() {
+    	
+    	String name = cmb_course_name.getValue();
+    	String akronim = tf_akronim.getText();
+    	String start_date = dp_date_pick.getValue().toString();
+    	String type = cmb_course_type.getValue();
+    	String l_days = tf_days_number.getText();
+    	
+		return new Training(name, type, akronim, start_date, l_days);
+		
+		
+}
     @FXML
     void addCourse(MouseEvent event) {
-    	
+//    
+//        	if(isNotCompleted()) {
+//        		showAlertFormNotComplited();
+//        	}else {
+        TrainingService trainingService = new TrainingService();
+        Training training = getCourseData();
+        trainingService.save(training);
+        		
+        	
     	
 
     }
@@ -55,12 +81,12 @@ public class CourseController {
     
     
     
-    ObservableList<String> course_name = FXCollections.observableArrayList("Back-end", "Front-end", "Web developer");
-    ObservableList<String> course_type = FXCollections.observableArrayList("D","W");
+    ObservableList<String> course_name = FXCollections.observableArrayList("Back-end", "Front-end", "Web developer", "Select");
+    ObservableList<String> course_type = FXCollections.observableArrayList("D","W", "Select");
   
-    void initialize() {
+   public void initialize() {
     	
-    	cmb_course_type.setItems(course_name);
+    	cmb_course_name.setItems(course_name);
     	cmb_course_type.setItems(course_type);
     }
 

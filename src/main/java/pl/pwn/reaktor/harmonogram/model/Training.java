@@ -1,5 +1,7 @@
 package pl.pwn.reaktor.harmonogram.model;
 
+import java.time.LocalDate;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -19,22 +21,26 @@ public class Training {
 		private String akronim;
 		
 		private String start_date;
+		
+		private String l_days;
 
-		public Training(String name, String type, String akronim, String start_date) {
-			super();
-			this.name = name;
-			this.type = type;
-			this.akronim = akronim;
-			this.start_date = start_date;
-		}
-
-		public Training(int id_t, String name, String type, String akronim, String start_date) {
+		public Training(int id_t, String name, String type, String akronim, String start_date, String l_days) {
 			super();
 			this.id_t = id_t;
 			this.name = name;
 			this.type = type;
 			this.akronim = akronim;
 			this.start_date = start_date;
+			this.l_days = l_days;
+		}
+
+		public Training(String name, String type, String akronim, String start_date, String l_days) {
+			super();
+			this.name = name;
+			this.type = type;
+			this.akronim = akronim;
+			this.start_date = start_date;
+			this.l_days = l_days;
 		}
 
 		public Training() {
@@ -81,51 +87,21 @@ public class Training {
 			this.start_date = start_date;
 		}
 
-		@Override
-		public int hashCode() {
-			final int prime = 31;
-			int result = 1;
-			result = prime * result + ((akronim == null) ? 0 : akronim.hashCode());
-			result = prime * result + id_t;
-			result = prime * result + ((name == null) ? 0 : name.hashCode());
-			result = prime * result + ((start_date == null) ? 0 : start_date.hashCode());
-			result = prime * result + ((type == null) ? 0 : type.hashCode());
-			return result;
+		public String getL_days() {
+			return l_days;
+		}
+
+		public void setL_days(String l_days) {
+			this.l_days = l_days;
 		}
 
 		@Override
-		public boolean equals(Object obj) {
-			if (this == obj)
-				return true;
-			if (obj == null)
-				return false;
-			if (getClass() != obj.getClass())
-				return false;
-			Training other = (Training) obj;
-			if (akronim == null) {
-				if (other.akronim != null)
-					return false;
-			} else if (!akronim.equals(other.akronim))
-				return false;
-			if (id_t != other.id_t)
-				return false;
-			if (name == null) {
-				if (other.name != null)
-					return false;
-			} else if (!name.equals(other.name))
-				return false;
-			if (start_date == null) {
-				if (other.start_date != null)
-					return false;
-			} else if (!start_date.equals(other.start_date))
-				return false;
-			if (type == null) {
-				if (other.type != null)
-					return false;
-			} else if (!type.equals(other.type))
-				return false;
-			return true;
+		public String toString() {
+			return "Training [id_t=" + id_t + ", name=" + name + ", type=" + type + ", akronim=" + akronim
+					+ ", start_date=" + start_date + ", l_days=" + l_days + "]";
 		}
-		
+
 		
 }
+
+		
