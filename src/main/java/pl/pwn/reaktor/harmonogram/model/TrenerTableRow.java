@@ -1,11 +1,13 @@
 package pl.pwn.reaktor.harmonogram.model;
 
+
 public class TrenerTableRow {
 	
 	private String date;
 	private String group;
 	private String topic;
 	private String trainer;
+	
 	public TrenerTableRow(String date, String group, String topic, String trainer) {
 		super();
 		this.date = date;
@@ -48,6 +50,11 @@ public class TrenerTableRow {
 		result = prime * result + ((topic == null) ? 0 : topic.hashCode());
 		result = prime * result + ((trainer == null) ? 0 : trainer.hashCode());
 		return result;
+	}
+	
+	@Override
+	public String toString() {
+		return "TrenerTableRow [date=" + date + ", group=" + group + ", topic=" + topic + ", trainer=" + trainer + "]";
 	}
 	@Override
 	public boolean equals(Object obj) {

@@ -20,5 +20,6 @@
       </TableView>
       <CheckBox fx:id="cb_mineOnly" layoutX="27.0" layoutY="553.0" mnemonicParsing="false" onAction="#showMineOnly" text="Wyświetl tylko moje zajęcia" />
       <Button fx:id="btn_logout" layoutX="594.0" layoutY="549.0" mnemonicParsing="false" onMouseClicked="#logout" text="Wyloguj" />
+      <Button fx:id="btn_refresh" layoutX="463.0" layoutY="549.0" mnemonicParsing="false" onMouseClicked="#refresh" text="Odśwież" />
    </children>
 </AnchorPane>
