@@ -11,8 +11,6 @@
       <TextField fx:id="tf_password" layoutX="117.0" layoutY="108.0" promptText="Password" />
       <Label layoutX="74.0" layoutY="58.0" text="Login" />
       <Label layoutX="48.0" layoutY="113.0" text="Password" />
-      <Button fx:id="btn_login" layoutX="81.0" layoutY="162.0" mnemonicParsing="false" onMouseClicked="#login" prefHeight="27.0" prefWidth="73.0" style="-fx-background-color: #F7C331;" text="Log in" />
-      <Button fx:id="btn_register" layoutX="164.0" layoutY="162.0" mnemonicParsing="false" onMouseClicked="#register" prefHeight="27.0" prefWidth="73.0" style="-fx-background-color: #F7C331;" text="Register" />
-      <Button fx:id="btn_guest" layoutX="248.0" layoutY="162.0" mnemonicParsing="false" onMouseClicked="#enterAsGuest" prefHeight="27.0" prefWidth="73.0" style="-fx-background-color: #F7C331;" text="Guest" />
+      <Button fx:id="btn_login" layoutX="157.0" layoutY="165.0" mnemonicParsing="false" onMouseClicked="#login" prefHeight="27.0" prefWidth="73.0" style="-fx-background-color: #F7C331;" text="Log in" />
    </children>
 </AnchorPane>

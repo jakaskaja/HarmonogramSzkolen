@@ -26,12 +26,6 @@ public class LoginController {
     private Button btn_login;
 
     @FXML
-    private Button btn_register;
-    
-    @FXML
-    private Button btn_guest;
-
-    @FXML
     void login(MouseEvent event) throws IOException {
     	
     		String login = tf_login.getText();
@@ -39,7 +33,7 @@ public class LoginController {
     		boolean isLogin = loginService.login(login, password);
     		int role = loginService.checkRole(login, password);
     		if (isLogin) {
- 
+  
     			if (role==1) {
 	    		Parent parent = FXMLLoader.load(getClass().getResource("/view/MentorView.fxml"));
 			Scene scene = new Scene(parent);
@@ -56,18 +50,6 @@ public class LoginController {
     			error.setTitle("Błąd logowania");
     			error.show();
     		}
-    }
-
-    @FXML
-    void register(MouseEvent event) {
-
-    }
-    
-    @FXML
-    void enterAsGuest(MouseEvent event) throws IOException {
-     	Parent parent = FXMLLoader.load(getClass().getResource("/view/TrenerView.fxml"));
-		Scene scene = new Scene(parent);
-		Main.getPrimaryStage().setScene(scene);
     }
     
     private LoginService loginService;
