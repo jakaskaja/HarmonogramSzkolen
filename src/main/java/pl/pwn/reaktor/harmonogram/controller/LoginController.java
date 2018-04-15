@@ -36,11 +36,19 @@ public class LoginController {
     	
     		String login = tf_login.getText();
     		String password = tf_password.getText();
-    		boolean isLogin = userService.login(login, password);
+    		boolean isLogin = loginService.login(login, password);
+    		int role = loginService.checkRole(login, password);
     		if (isLogin) {
-	    		Parent parent = FXMLLoader.load(getClass().getResource("/view/LoginView.fxml"));
+ 
+    			if (role==1) {
+	    		Parent parent = FXMLLoader.load(getClass().getResource("/view/MentorView.fxml"));
 			Scene scene = new Scene(parent);
 			Main.getPrimaryStage().setScene(scene);
+    			} else {
+    				Parent parent = FXMLLoader.load(getClass().getResource("/view/TrenerView.fxml"));
+    				Scene scene = new Scene(parent);
+    				Main.getPrimaryStage().setScene(scene);
+    			}
     		} else {
     			Alert error = new Alert(AlertType.ERROR);
     			error.setHeaderText("Error");
@@ -62,10 +70,10 @@ public class LoginController {
 		Main.getPrimaryStage().setScene(scene);
     }
     
-    private LoginService userService;
+    private LoginService loginService;
     
     public void initialize() {
-    		userService = new LoginService();
+    		loginService = new LoginService();
     }
 
 }
