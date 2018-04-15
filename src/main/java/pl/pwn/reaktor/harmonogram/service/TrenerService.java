@@ -38,11 +38,11 @@ public class TrenerService {
 		Transaction trx = session.beginTransaction();
 		
 		
-		Query query = session.createSQLQuery("select cal.date, t.akronim, cat.cat_name, u.last_name from calendar cal left join\n" + 
-				"categories cat on cal.id_cat = cat.id_cat left join\n" + 
-				"training t on cat.id_t = t.id_t left join\n" + 
-				"training_couch tc on cal.id_cal = tc.id_cal left join\n" + 
-				"user u on tc.id_user = u.id_user");
+		Query query = session.createSQLQuery("select calendar.date, training.akronim, categories.cat_name, user.last_name from calendar left join\n" + 
+				"categories on calendar.id_cat = categories.id_cat left join\n" + 
+				"training on categories.id_t = training.id_t left join\n" + 
+				"training_couch on calendar.id_cal = training_couch.id_cal left join\n" + 
+				"user on training_couch.id_user = user.id_user");
 		List<TrenerTableRow> trenerTableRows = query.list();
 		trx.commit();
 		session.close();
